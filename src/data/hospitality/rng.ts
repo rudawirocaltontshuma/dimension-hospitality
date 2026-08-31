@@ -1,5 +1,5 @@
 /**
- * Deterministic pseudo-random helpers used to generate the fictional Nexora Hospitality
+ * Deterministic pseudo-random helpers used to generate the fictional Dimension Hospitality
  * dataset. Using a seeded generator (instead of Math.random) keeps every render - server
  * and client - identical, which avoids hydration mismatches for data created at module load.
  */

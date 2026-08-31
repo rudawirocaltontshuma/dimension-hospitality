@@ -31,7 +31,7 @@ export const SERVICES_CATALOG: ServiceCatalogEntry[] = [
     id: "svc-spa",
     name: "Spa & Wellness",
     category: "Wellness",
-    description: "Massages, facials, and sauna access at the Nexora wellness spa.",
+    description: "Massages, facials, and sauna access at the Dimension Hospitality wellness spa.",
     price: 120,
     unit: "per session",
     icon: "Sparkles",

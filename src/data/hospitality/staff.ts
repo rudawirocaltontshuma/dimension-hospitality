@@ -43,7 +43,7 @@ export function generateStaff(rng: Rng): StaffMember[] {
       staff.push({
         id: `staff-${String(counter).padStart(3, "0")}`,
         name: `${firstName} ${lastName}`,
-        email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@nexorahospitality.${domain.split(".").at(-1)}`,
+        email: `${firstName.toLowerCase()}.${lastName.toLowerCase()}@dimensionhospitality.${domain.split(".").at(-1)}`,
         department,
         role,
         shift: rng.pick(SHIFTS),

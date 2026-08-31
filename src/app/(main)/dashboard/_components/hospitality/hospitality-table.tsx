@@ -24,7 +24,7 @@ interface HospitalityTableProps<T> {
 }
 
 /**
- * A lightweight, presentational table shell shared across the Nexora Hospitality directories
+ * A lightweight, presentational table shell shared across the Dimension Hospitality directories
  * (Reservations, Guests, Rooms, Staff, Maintenance, ...). Pages own search/filter/sort state
  * and pass in the already-derived `rows`; this component only paginates and renders them.
  */

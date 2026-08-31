@@ -53,9 +53,9 @@ export function SettingsView() {
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <Field label="Property name" defaultValue="Nexora Hospitality Downtown" />
-                <Field label="Brand" defaultValue="Nexora Hospitality" />
-                <Field label="Contact email" type="email" defaultValue="frontdesk@nexorahospitality.com" />
+                <Field label="Property name" defaultValue="Dimension Hospitality Downtown" />
+                <Field label="Brand" defaultValue="Dimension Hospitality" />
+                <Field label="Contact email" type="email" defaultValue="frontdesk@dimensionhospitality.com" />
                 <Field label="Contact phone" defaultValue="+1 (415) 555-0134" />
               </div>
               <div className="grid gap-1.5">

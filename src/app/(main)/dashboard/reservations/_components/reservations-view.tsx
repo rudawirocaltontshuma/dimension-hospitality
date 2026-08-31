@@ -142,7 +142,7 @@ export function ReservationsView() {
     <div className="flex flex-col gap-4">
       <PageHeader
         title="Reservations"
-        description="Every fictional booking across Nexora Hospitality Downtown."
+        description="Every fictional booking across Dimension Hospitality Downtown."
         actions={
           <Button onClick={() => router.push("/dashboard/check-in")}>
             <Plus />

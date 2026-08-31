@@ -89,7 +89,7 @@ export function CreateGuestDialog({ onCreate }: { onCreate: (guest: Guest) => vo
         <form onSubmit={handleSubmit}>
           <DialogHeader>
             <DialogTitle>Create guest profile</DialogTitle>
-            <DialogDescription>Fictional guest details for the Nexora Hospitality demo directory.</DialogDescription>
+            <DialogDescription>Fictional guest details for the Dimension Hospitality demo directory.</DialogDescription>
           </DialogHeader>
 
           <div className="flex flex-col gap-4 py-4">
