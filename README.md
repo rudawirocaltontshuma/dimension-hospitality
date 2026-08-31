@@ -1,146 +1,92 @@
-# Next.js Admin Template with TypeScript & Shadcn UI
+# Dimension Hospitality
 
-**Studio Admin** - Includes multiple dashboards, authentication layouts, customizable theme presets, and more.
+**Dimension Hospitality** is a frontend-only demonstration of a hotel & hospitality management platform, built with Next.js 16, TypeScript, Tailwind CSS v4, and shadcn/ui.
 
-<img src="https://github.com/arhamkhnz/next-shadcn-admin-dashboard/blob/main/media/dashboard.png?version=5" alt="Dashboard Screenshot">
+It covers the full day-to-day workflow of running a property — reservations, front desk, housekeeping, billing, staff, and analytics — using deterministic, fictional mock data. There is no backend, database, authentication, booking engine, or payment processing; every workflow (check-in, check-out, creating a guest, marking a room clean, etc.) updates local component state only and never persists.
 
-Most admin templates I found, free or paid, felt cluttered, outdated, or too rigid. I built this as a cleaner alternative with features often missing in others, such as theme toggling and layout controls, while keeping the design modern, minimal, and flexible.
+> [!IMPORTANT]
+> This is a UI/UX demo. No real guest information, reservations, or payments are involved anywhere in the app.
 
-> **View demo:** [studio admin](https://next-shadcn-admin-dashboard.vercel.app)
+## Modules
 
-> [!NOTE]
-> Looking for the Base UI version? Check out [next-shadcn-admin-dashboard-baseui](https://github.com/arhamkhnz/next-shadcn-admin-dashboard-baseui).
->
-> Looking for the React Aria version? Check out [arhamkhnz/next-shadcn-admin-dashboard-aria](https://github.com/arhamkhnz/next-shadcn-admin-dashboard-aria).
->
-> Looking for the TanStack Start version? Check out [tanstack-shadcn-admin-dashboard](https://github.com/arhamkhnz/tanstack-shadcn-admin-dashboard).
+All modules live under `/dashboard`:
 
-> [!TIP]
-> I’m also working on Nuxt.js and Svelte versions of this dashboard. They’ll be live soon.
+| Module | Route |
+| --- | --- |
+| Dashboard | `/dashboard` |
+| Reservations | `/dashboard/reservations`, `/dashboard/reservations/[id]` |
+| Guests | `/dashboard/guests`, `/dashboard/guests/[id]` |
+| Rooms | `/dashboard/rooms` |
+| Room Types | `/dashboard/room-types` |
+| Housekeeping | `/dashboard/housekeeping` |
+| Front Desk | `/dashboard/front-desk` |
+| Check-in | `/dashboard/check-in` |
+| Check-out | `/dashboard/check-out` |
+| Maintenance | `/dashboard/maintenance` |
+| Services | `/dashboard/services` |
+| Billing | `/dashboard/billing` |
+| Staff | `/dashboard/staff` |
+| Calendar | `/dashboard/calendar` |
+| Reports | `/dashboard/reports` |
+| Analytics | `/dashboard/analytics` |
+| Settings | `/dashboard/settings` |
 
-## Features
-
-- Built with Next.js 16, TypeScript, Tailwind CSS v4, and Shadcn UI  
-- Responsive and mobile-friendly  
-- Customizable theme presets (light/dark modes with color schemes like Tangerine, Brutalist, and more)  
-- Flexible layouts (collapsible sidebar, variable content widths)  
-- Authentication flows and screens  
-- Prebuilt dashboards (Default, CRM, Finance, Analytics, Productivity) plus legacy variants  
-- Role-Based Access Control (RBAC) with config-driven UI and multi-tenant support *(planned)*  
-
-> [!NOTE]
-> The default dashboard uses the **shadcn neutral** theme.  
-> It also includes additional color presets inspired by [Tweakcn](https://tweakcn.com):  
->
-> - Tangerine  
-> - Neo Brutalism  
-> - Soft Pop  
->
-> You can create more presets by following the same structure as the existing ones.
-
-> Looking for the **Next.js 15** version?  
-> Check out the [`archive/next15`](https://github.com/arhamkhnz/next-shadcn-admin-dashboard/tree/archive/next15) branch.  
-> This branch contains the setup prior to upgrading to Next 16 and the React Compiler.
-
-> Looking for the **Next.js 14 + Tailwind CSS v3** version?  
-> Check out the [`archive/next14-tailwindv3`](https://github.com/arhamkhnz/next-shadcn-admin-dashboard/tree/archive/next14-tailwindv3) branch.  
-> It has a different color theme and is not actively maintained, but I try to keep it updated with major changes.  
+The original template's generic demo dashboards and pages (CRM, E-commerce, Kanban, Invoice, etc.) are still reachable from the sidebar under **Template Library**, but they are not part of the Dimension Hospitality product.
 
 ## Tech Stack
 
-- **Framework**: Next.js 16 (App Router), TypeScript, Tailwind CSS v4  
-- **UI Components**: Shadcn UI  
-- **Validation**: Zod  
-- **Forms & State Management**: React Hook Form, Zustand  
-- **Tables & Data Handling**: TanStack Table  
-- **Tooling & DX**: Biome, Husky  
+- **Framework**: Next.js 16 (App Router), TypeScript, Tailwind CSS v4
+- **UI Components**: shadcn/ui (radix-nova style)
+- **Charts**: Recharts
+- **Calendar**: FullCalendar (Month/Week) + a custom horizontally-scrollable Timeline view
+- **Tables**: TanStack Table (legacy template screens) and a lightweight shared table for the hospitality modules
+- **State**: local React state only — there is no server, API, or database
+- **Tooling**: Biome, Husky
 
-## Screens
+## Mock Data
 
-### Available
-- Default Dashboard  
-- CRM Dashboard  
-- Finance Dashboard  
-- Analytics Dashboard  
-- Productivity Dashboard  
-- E-commerce Dashboard  
-- Academy Dashboard  
-- Logistics Dashboard  
-- Infrastructure Dashboard  
-- File Manager  
-- Patient Monitoring  
-- Chat Page  
-- Email Page  
-- Profile  
-- Users Management  
-- Roles Management  
-- Kanban Board  
-- Tasks Page  
-- Invoice Page  
-- Calendar Page  
-- Authentication (4 screens)  
-- Legacy: Default v1, CRM v1, Finance v1, Analytics v1
-
-### Planned
-I’ve added all the planned screens. Feel free to open an issue for requesting something specific.
-
-## Colocation File System Architecture
-
-This project follows a **colocation-based architecture** each feature keeps its own pages, components, and logic inside its route folder.  
-Shared UI, hooks, and configuration live at the top level, making the codebase modular, scalable, and easier to maintain as the app grows.
-
-For a full breakdown of the structure with examples, see the [Next Colocation Template](https://github.com/arhamkhnz/next-colocation-template).
+Every guest, reservation, room, staff member, and invoice is generated deterministically from a seeded random generator in [`src/data/hospitality`](./src/data/hospitality), so the dataset is internally consistent (occupancy, arrivals/departures, and billing all derive from the same underlying reservations) and identical across every render.
 
 ## Getting Started
 
-You can run this project locally, or deploy it instantly with Vercel.
-
-### Deploy with Vercel
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Farhamkhnz%2Fnext-shadcn-admin-dashboard)
-
-_Deploy your own copy with one click._
-
-### Run locally
-
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/arhamkhnz/next-shadcn-admin-dashboard.git
-   ```
-   
-2. **Navigate into the project**
-   ```bash
-    cd next-shadcn-admin-dashboard
-   ```
-   
-3. **Install dependencies**
-   ```bash
-    npm install
+   git clone https://github.com/rudawirocaltontshuma/hospitality_management.git
+   cd hospitality_management
    ```
 
-4. **Start the development server**
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
    ```bash
    npm run dev
    ```
 
-Your app will be running at [http://localhost:3000](http://localhost:3000)
+   The app will be running at [http://localhost:3000](http://localhost:3000).
 
 ### Formatting and Linting
 
-Format, lint, and organize imports
 ```bash
-npx @biomejs/biome check --write
+npm run check       # biome check
+npm run check:fix   # biome check --write
+npm run lint         # biome lint
+npm run format       # biome format --write
 ```
-> For more information on available rules, fixes, and CLI options, refer to the [Biome documentation](https://biomejs.dev/).
 
----
+### Production Build
 
-> [!IMPORTANT]  
-> This project is updated frequently. If you’re working from a fork or an older clone, pull the latest changes before syncing. Some updates may include breaking changes.
+```bash
+npm run build
+npm run start
+```
 
----
+## Colocation File System Architecture
 
-Contributions are welcome. Feel free to open issues, feature requests, or start a discussion.
+This project follows a **colocation-based architecture**: each dashboard module keeps its own page, components, and logic inside its route folder (`src/app/(main)/dashboard/<module>/_components`). Shared UI, hooks, and the mock dataset live at the top level (`src/components`, `src/hooks`, `src/data/hospitality`).
 
+## Credits
 
-**Happy Vibe Coding!**
+Dimension Hospitality is built on top of [Studio Admin](https://github.com/arhamkhnz/next-shadcn-admin-dashboard) by [Mohammed Arham Khan](https://github.com/arhamkhnz), an open-source Next.js admin dashboard template — used here under its MIT license (see [`LICENSE`](./LICENSE)). The original template's admin shell, sidebar, theme system, and several demo dashboards remain in the codebase and are credited accordingly.
