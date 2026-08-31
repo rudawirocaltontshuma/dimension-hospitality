@@ -1,4 +1,4 @@
-// Fixed reference date for the fictional Nexora Hospitality demo dataset.
+// Fixed reference date for the fictional Dimension Hospitality demo dataset.
 // Keeping this static (instead of `new Date()`) makes every generated record and every
 // chart deterministic across server render, client hydration, and every day this demo runs.
 export const TODAY = new Date(2026, 7, 31);

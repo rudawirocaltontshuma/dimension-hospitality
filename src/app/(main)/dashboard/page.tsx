@@ -15,7 +15,7 @@ export default function Page() {
     <div className="flex flex-col gap-4">
       <PageHeader
         title="Hotel Operations"
-        description={`${format(TODAY, "EEEE, do MMMM yyyy")} · Nexora Hospitality Downtown`}
+        description={`${format(TODAY, "EEEE, do MMMM yyyy")} · Dimension Hospitality Downtown`}
       />
 
       <KpiGrid />
