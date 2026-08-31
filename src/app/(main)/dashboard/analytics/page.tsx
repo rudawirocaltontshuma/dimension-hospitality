@@ -1,82 +1,53 @@
+import { PageHeader } from "@/app/(main)/dashboard/_components/hospitality/page-header";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-import { AnalyticsKpiStrip } from "./_components/analytics-kpi-strip";
-import { AnalyticsToolbar } from "./_components/analytics-toolbar";
-import { RealtimeVisitors } from "./_components/realtime-visitors";
-import { TopPages } from "./_components/top-pages";
-import { TopTrafficSources } from "./_components/top-traffic-sources";
-import { TrafficQuality } from "./_components/traffic-quality";
+import { GuestAnalytics } from "./_components/guest-analytics";
+import { HousekeepingAnalytics } from "./_components/housekeeping-analytics";
+import { OccupancyAnalytics } from "./_components/occupancy-analytics";
+import { ReservationAnalytics } from "./_components/reservation-analytics";
+import { RevenueAnalytics } from "./_components/revenue-analytics";
+import { RoomAnalytics } from "./_components/room-analytics";
 
-// Import this stylesheet in any page or component that renders country flag classes.
-import "@/styles/flag-icons/flags.css";
+const TABS = [
+  { value: "occupancy", label: "Occupancy" },
+  { value: "revenue", label: "Revenue" },
+  { value: "rooms", label: "Rooms" },
+  { value: "reservations", label: "Reservations" },
+  { value: "guests", label: "Guests" },
+  { value: "housekeeping", label: "Housekeeping" },
+];
 
 export default function Page() {
   return (
     <div className="flex flex-col gap-4">
-      <div className="space-y-1">
-        <h1 className="text-3xl tracking-tight">Hello, Aiy</h1>
-        <p className="text-muted-foreground text-sm">
-          Monitor traffic, engagement, and conversion performance in one view.
-        </p>
-      </div>
+      <PageHeader title="Analytics" description="Deeper trend analysis across the property." />
 
-      <Tabs defaultValue="overview" className="flex flex-col gap-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <TabsList className="gap-1">
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="audience">Audience</TabsTrigger>
-            <TabsTrigger value="acquisition">Acquisition</TabsTrigger>
-            <TabsTrigger value="engagement">Engagement</TabsTrigger>
-            <TabsTrigger value="conversions">Conversions</TabsTrigger>
-          </TabsList>
+      <Tabs defaultValue="occupancy">
+        <TabsList className="flex-wrap">
+          {TABS.map((tab) => (
+            <TabsTrigger key={tab.value} value={tab.value}>
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
 
-          <AnalyticsToolbar />
-        </div>
-
-        <TabsContent value="overview" className="flex flex-col gap-4">
-          <AnalyticsKpiStrip />
-
-          <div className="grid grid-cols-1 items-stretch gap-4 xl:grid-cols-12">
-            <div className="xl:col-span-7">
-              <TrafficQuality />
-            </div>
-            <div className="xl:col-span-5">
-              <RealtimeVisitors />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 items-stretch gap-4 xl:grid-cols-12">
-            <div className="xl:col-span-7">
-              <TopPages />
-            </div>
-            <div className="xl:col-span-5 xl:col-start-8">
-              <TopTrafficSources />
-            </div>
-          </div>
+        <TabsContent value="occupancy" className="mt-4">
+          <OccupancyAnalytics />
         </TabsContent>
-
-        <TabsContent value="audience">
-          <div className="flex h-64 items-center justify-center rounded-xl border border-border border-dashed text-muted-foreground">
-            Audience view coming soon.
-          </div>
+        <TabsContent value="revenue" className="mt-4">
+          <RevenueAnalytics />
         </TabsContent>
-
-        <TabsContent value="acquisition">
-          <div className="flex h-64 items-center justify-center rounded-xl border border-border border-dashed text-muted-foreground">
-            Acquisition view coming soon.
-          </div>
+        <TabsContent value="rooms" className="mt-4">
+          <RoomAnalytics />
         </TabsContent>
-
-        <TabsContent value="engagement">
-          <div className="flex h-64 items-center justify-center rounded-xl border border-border border-dashed text-muted-foreground">
-            Engagement view coming soon.
-          </div>
+        <TabsContent value="reservations" className="mt-4">
+          <ReservationAnalytics />
         </TabsContent>
-
-        <TabsContent value="conversions">
-          <div className="flex h-64 items-center justify-center rounded-xl border border-border border-dashed text-muted-foreground">
-            Conversions view coming soon.
-          </div>
+        <TabsContent value="guests" className="mt-4">
+          <GuestAnalytics />
+        </TabsContent>
+        <TabsContent value="housekeeping" className="mt-4">
+          <HousekeepingAnalytics />
         </TabsContent>
       </Tabs>
     </div>
