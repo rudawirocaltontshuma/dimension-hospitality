@@ -9,6 +9,6 @@ export const APP_CONFIG = {
   meta: {
     title: "Dimension Hospitality - Hotel & Hospitality Management Platform",
     description:
-      "Dimension Hospitality is a frontend demonstration of a hotel and hospitality management platform covering reservations, front desk, housekeeping, billing, staff, and analytics with fictional data only.",
+      "Dimension Hospitality is a hotel and hospitality management interface covering reservations, front desk, housekeeping, billing, staff, and analytics.",
   },
 };

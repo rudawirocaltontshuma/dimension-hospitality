@@ -1,15 +1,10 @@
 # Dimension Hospitality
 
-**Dimension Hospitality** is a frontend-only demonstration of a hotel & hospitality management platform, built with Next.js 16, TypeScript, Tailwind CSS v4, and shadcn/ui.
+A hotel & hospitality management interface built with Next.js 16, TypeScript, Tailwind CSS v4, and shadcn/ui.
 
-It covers the full day-to-day workflow of running a property — reservations, front desk, housekeeping, billing, staff, and analytics — using deterministic, fictional mock data. There is no backend, database, authentication, booking engine, or payment processing; every workflow (check-in, check-out, creating a guest, marking a room clean, etc.) updates local component state only and never persists.
-
-> [!IMPORTANT]
-> This is a UI/UX demo. No real guest information, reservations, or payments are involved anywhere in the app.
+Dimension Hospitality covers the full day-to-day operations of running a property — reservations, front desk, housekeeping, billing, staff, and analytics — in a single, cohesive admin interface. It ships as a **frontend-only** application: every screen runs against a realistic, deterministic mock dataset, so you can preview and build against the full UI immediately, without standing up a backend first.
 
 ## Modules
-
-All modules live under `/dashboard`:
 
 | Module | Route |
 | --- | --- |
@@ -31,21 +26,37 @@ All modules live under `/dashboard`:
 | Analytics | `/dashboard/analytics` |
 | Settings | `/dashboard/settings` |
 
-The original template's generic demo dashboards and pages (CRM, E-commerce, Kanban, Invoice, etc.) are still reachable from the sidebar under **Template Library**, but they are not part of the Dimension Hospitality product.
+## Features
+
+- **Operations dashboard** — occupancy, revenue, arrivals/departures, and pending-reservation KPIs with trend charts
+- **Reservations** — searchable directory, per-reservation detail (stay, services, billing, timeline)
+- **Guests** — directory, loyalty tiers, spend history, guest profile pages, and a create-guest flow
+- **Rooms & room types** — list/grid inventory views, occupancy and rate detail
+- **Housekeeping** — status board with priority, assignment, and last-cleaned tracking
+- **Front desk** — arrivals, departures, in-house guests, requests, and operational alerts
+- **Check-in / check-out** — guided, step-by-step front-desk workflows
+- **Maintenance** — issue tracking by category, priority, and status
+- **Services** — service catalog with request volume and revenue
+- **Billing** — invoices, folio charges, taxes, and settlement status
+- **Staff** — directory across departments, shifts, and performance
+- **Calendar** — month/week views and a horizontally scrollable reservation timeline
+- **Reports & analytics** — occupancy, revenue, reservation, guest, room, and housekeeping breakdowns (Recharts)
+- **Settings** — property profile, booking policies, billing/tax, and notification preferences
+- Fully responsive: collapsible sidebar with mobile sheet navigation, adaptive grids, and scrollable tables/calendar/timeline on small screens
+- Light/dark mode and configurable theme presets
 
 ## Tech Stack
 
 - **Framework**: Next.js 16 (App Router), TypeScript, Tailwind CSS v4
 - **UI Components**: shadcn/ui (radix-nova style)
 - **Charts**: Recharts
-- **Calendar**: FullCalendar (Month/Week) + a custom horizontally-scrollable Timeline view
-- **Tables**: TanStack Table (legacy template screens) and a lightweight shared table for the hospitality modules
-- **State**: local React state only — there is no server, API, or database
+- **Calendar**: FullCalendar (month/week) plus a custom timeline view
+- **State**: local React state — no server, API, or database
 - **Tooling**: Biome, Husky
 
 ## Mock Data
 
-Every guest, reservation, room, staff member, and invoice is generated deterministically from a seeded random generator in [`src/data/hospitality`](./src/data/hospitality), so the dataset is internally consistent (occupancy, arrivals/departures, and billing all derive from the same underlying reservations) and identical across every render.
+Every guest, reservation, room, staff member, and invoice is generated deterministically from a seeded random generator in [`src/data/hospitality`](./src/data/hospitality). The dataset is internally consistent — occupancy, arrivals/departures, and billing all derive from the same underlying reservations — and identical across every render, so the app behaves the same way on every load.
 
 ## Getting Started
 
@@ -83,10 +94,43 @@ npm run build
 npm run start
 ```
 
-## Colocation File System Architecture
+## Project Structure
 
-This project follows a **colocation-based architecture**: each dashboard module keeps its own page, components, and logic inside its route folder (`src/app/(main)/dashboard/<module>/_components`). Shared UI, hooks, and the mock dataset live at the top level (`src/components`, `src/hooks`, `src/data/hospitality`).
+This project follows a **colocation-based architecture**: each module keeps its own page, components, and logic inside its route folder.
 
-## Credits
+```
+src
+├── app
+│   └── (main)/dashboard
+│       ├── _components
+│       │   ├── hospitality   # Shared UI: data table, status badge, stat card, page header
+│       │   ├── overview      # Dashboard KPI/chart widgets
+│       │   ├── header        # App header (search, theme, layout controls, account)
+│       │   └── sidebar       # App sidebar / navigation
+│       ├── reservations
+│       ├── guests
+│       ├── rooms
+│       ├── room-types
+│       ├── housekeeping
+│       ├── front-desk
+│       ├── check-in
+│       ├── check-out
+│       ├── maintenance
+│       ├── services
+│       ├── billing
+│       ├── staff
+│       ├── calendar
+│       ├── reports
+│       ├── analytics
+│       └── settings
+├── components/ui        # shadcn/ui primitives
+├── data/hospitality      # Mock dataset: generators, types, selectors, formatters
+├── hooks                 # Reusable hooks
+├── lib                    # Config & utilities
+├── navigation             # Sidebar nav config
+└── styles                 # Tailwind / theme setup
+```
 
-Dimension Hospitality is built on top of [Studio Admin](https://github.com/arhamkhnz/next-shadcn-admin-dashboard) by [Mohammed Arham Khan](https://github.com/arhamkhnz), an open-source Next.js admin dashboard template — used here under its MIT license (see [`LICENSE`](./LICENSE)). The original template's admin shell, sidebar, theme system, and several demo dashboards remain in the codebase and are credited accordingly.
+## License
+
+MIT — see [`LICENSE`](./LICENSE).
